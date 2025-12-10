@@ -1,0 +1,36 @@
+function startGame() {
+
+    let plays = prompt("How many plays?");
+    plays = Number(plays);
+
+    if (isNaN(plays) || plays <= 0) {
+        document.getElementById("output").innerHTML = "Please enter a valid number.";
+        return;
+    }
+
+    let balance = 0;
+
+    for (let i = 0; i < plays; i++) {
+
+        let roll = Math.floor(Math.random() * 6) + 1;
+
+        // Rules based on your slides:
+        // 1 or 3 = +5
+        // 5 = +10
+        // 2, 4, 6 = -2
+
+        if (roll === 1 || roll === 3) {
+            balance += 5;
+        }
+        else if (roll === 5) {
+            balance += 10;
+        }
+        else {
+            balance -= 2;
+        }
+    }
+
+    document.getElementById("output").innerHTML =
+        "Number of plays: " + plays +
+        "<br>Final balance: $" + balance;
+}
